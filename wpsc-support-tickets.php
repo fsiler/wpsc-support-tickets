@@ -49,7 +49,7 @@ if (!is_dir(WP_CONTENT_DIR . '/uploads/wpscSupportTickets/')) {
 }
 
 /**
- * Action definitions 
+ * Action definitions
  */
 function wpscSupportTickets_settings() {
     do_action('wpscSupportTickets_settings');
@@ -75,9 +75,9 @@ if(!function_exists('wpsctSlug')) {
         /**
          *
          * Returns a slug of the input string, suitable URLs, HTML and other space/character sensitive operations
-         * 
+         *
          * @param string $str
-         * @return string 
+         * @return string
          */
         function wpsctSlug($str) {
                 $str = strtolower(trim($str));
@@ -87,12 +87,12 @@ if(!function_exists('wpsctSlug')) {
         }
 }
 
-require_once(WP_PLUGIN_DIR . '/wpsc-support-tickets/php/adminajax.php'); 
-require_once(WP_PLUGIN_DIR . '/wpsc-support-tickets/php/publicajax.php'); 
+require_once(WP_PLUGIN_DIR . '/wpsc-support-tickets/php/adminajax.php');
+require_once(WP_PLUGIN_DIR . '/wpsc-support-tickets/php/publicajax.php');
 
 if(!function_exists('wpsctPromptForCustomFields')) {
     /**
-     * 
+     *
      * @global type $wpdb
      * @return string
      */
@@ -112,24 +112,24 @@ if(!function_exists('wpsctPromptForCustomFields')) {
         $wpsct_text_fields = array(
             'input (text)','shippingcity','firstname','lastname','shippingaddress','input (numeric)','zipcode'
         );
-        
+
         $wpsct_states = array(
             "not applicable" => 'Other (Non-US)',
             "AL" => __('Alabama', 'wpsc-support-tickets'),      "AK" => __('Alaska', 'wpsc-support-tickets'),       "AZ" => __('Arizona', 'wpsc-support-tickets'),      "CA" => __('California', 'wpsc-support-tickets'),
             "CO" => __('Colorado', 'wpsc-support-tickets'),     "CT" => __('Connecticut', 'wpsc-support-tickets'),  "DE" => __('Delaware', 'wpsc-support-tickets'),     "DC" => __('District Of Columbia', 'wpsc-support-tickets'),
-            "FL" => __('Florida', 'wpsc-support-tickets'),      "GA" => __('Georgia', 'wpsc-support-tickets'),      "HI" => __('Hawaii', 'wpsc-support-tickets'),       "ID" => __('Idaho', 'wpsc-support-tickets'), 
-            "IL" => __('Illinois', 'wpsc-support-tickets'),     "IN" => __('Indiana', 'wpsc-support-tickets'),      "IA" => __('Iowa', 'wpsc-support-tickets'),         "KS" => __('Kansas', 'wpsc-support-tickets'),       
+            "FL" => __('Florida', 'wpsc-support-tickets'),      "GA" => __('Georgia', 'wpsc-support-tickets'),      "HI" => __('Hawaii', 'wpsc-support-tickets'),       "ID" => __('Idaho', 'wpsc-support-tickets'),
+            "IL" => __('Illinois', 'wpsc-support-tickets'),     "IN" => __('Indiana', 'wpsc-support-tickets'),      "IA" => __('Iowa', 'wpsc-support-tickets'),         "KS" => __('Kansas', 'wpsc-support-tickets'),
             "KY" => __('Kentucky', 'wpsc-support-tickets'),     "LA" => __('Louisiana', 'wpsc-support-tickets'),    "ME" => __('Maine', 'wpsc-support-tickets'),        "MD" => __('Maryland', 'wpsc-support-tickets'),
-            "MA" => __('Massachusetts', 'wpsc-support-tickets'),"MI" => __('Michigan', 'wpsc-support-tickets'),     "MN" => __('Minnesota', 'wpsc-support-tickets'),    "MS" => __('Mississippi', 'wpsc-support-tickets'),  
-            "MO" => __('Missouri', 'wpsc-support-tickets'),     "MT" => __('Montana', 'wpsc-support-tickets'),      "NE" => __('Nebraska', 'wpsc-support-tickets'),     "NV" => __('Nevada', 'wpsc-support-tickets'),       
+            "MA" => __('Massachusetts', 'wpsc-support-tickets'),"MI" => __('Michigan', 'wpsc-support-tickets'),     "MN" => __('Minnesota', 'wpsc-support-tickets'),    "MS" => __('Mississippi', 'wpsc-support-tickets'),
+            "MO" => __('Missouri', 'wpsc-support-tickets'),     "MT" => __('Montana', 'wpsc-support-tickets'),      "NE" => __('Nebraska', 'wpsc-support-tickets'),     "NV" => __('Nevada', 'wpsc-support-tickets'),
             "NH" => __('New Hampshire', 'wpsc-support-tickets'),"NJ" => __('New Jersey', 'wpsc-support-tickets'),   "NM" => __('New Mexico', 'wpsc-support-tickets'),   "NY" => __('New York', 'wpsc-support-tickets'),
             "NC" => __('North Carolina', 'wpsc-support-tickets'),"ND" => __('North Dakota', 'wpsc-support-tickets'),"OH" => __('Ohio', 'wpsc-support-tickets'),         "OK" => __('Oklahoma', 'wpsc-support-tickets'),
             "OR" => __('Oregon', 'wpsc-support-tickets'),       "PA" => __('Pennsylvania', 'wpsc-support-tickets'), "RI" => __('Rhode Island', 'wpsc-support-tickets'), "SC" => __('South Carolina', 'wpsc-support-tickets'),
             "SD" => __('South Dakota', 'wpsc-support-tickets'), "TN" => __('Tennessee', 'wpsc-support-tickets'),    "TX" => __('Texas', 'wpsc-support-tickets'),        "UT" => __('Utah', 'wpsc-support-tickets'),
             "VT" => __('Vermont', 'wpsc-support-tickets'),      "VA" => __('Virginia', 'wpsc-support-tickets'),     "WA" => __('Washington', 'wpsc-support-tickets'),   "WV" => __('West Virginia', 'wpsc-support-tickets'),
             "WI" => __('Wisconsin', 'wpsc-support-tickets'),    "WY" => __('Wyoming', 'wpsc-support-tickets'),
-        );    
-        
+        );
+
         $wpsct_countries = array(
             __("United States", 'wpsc-support-tickets'), __("Canada", 'wpsc-support-tickets'),__("United Kingdom", 'wpsc-support-tickets'),__("Ireland", 'wpsc-support-tickets'),__("Australia", 'wpsc-support-tickets'),__("New Zealand", 'wpsc-support-tickets'),__("Afghanistan", 'wpsc-support-tickets'),__("Albania", 'wpsc-support-tickets'),__("Algeria", 'wpsc-support-tickets'),__("American Samoa", 'wpsc-support-tickets'),
             __("Andorra", 'wpsc-support-tickets'),__("Angola", 'wpsc-support-tickets'),__("Anguilla", 'wpsc-support-tickets'),__("Antarctica", 'wpsc-support-tickets'),__("Antigua and Barbuda", 'wpsc-support-tickets'),__("Argentina", 'wpsc-support-tickets'),__("Armenia", 'wpsc-support-tickets'),__("Aruba", 'wpsc-support-tickets'),__("Australia", 'wpsc-support-tickets'),__("Austria", 'wpsc-support-tickets'),__("Azerbaijan", 'wpsc-support-tickets'),
@@ -156,20 +156,20 @@ if(!function_exists('wpsctPromptForCustomFields')) {
             __("Turkmenistan", 'wpsc-support-tickets'),__("Turks and Caicos Islands", 'wpsc-support-tickets'),__("Tuvalu", 'wpsc-support-tickets'),__("Uganda", 'wpsc-support-tickets'),__("Ukraine", 'wpsc-support-tickets'),__("United Arab Emirates", 'wpsc-support-tickets'),__("United States Minor Outlying Islands", 'wpsc-support-tickets'),__("Uruguay", 'wpsc-support-tickets'),
             __("Uzbekistan", 'wpsc-support-tickets'),__("Vanuatu", 'wpsc-support-tickets'),__("Venezuela", 'wpsc-support-tickets'),__("Viet Nam", 'wpsc-support-tickets'),__("Virgin Islands, British", 'wpsc-support-tickets'),__("Virgin Islands, U.S.", 'wpsc-support-tickets'),__("Wallis and Futuna", 'wpsc-support-tickets'),__("Western Sahara", 'wpsc-support-tickets'),__("Yemen", 'wpsc-support-tickets'),
             __("Zambia", 'wpsc-support-tickets'),__("Zimbabwe", 'wpsc-support-tickets'),
-        );    
+        );
 
         $wpsct_style_width = '';
         $wpsct_style_inline = '';
         if ($devOptions['disable_inline_styles'] == 'false') {
             $wpsct_style_width ='style="width:100%"';
             $wpsct_style_inline = 'style="display:inline;"';
-        }  
+        }
 
         if(isset($resultscf)) {
                 foreach ($resultscf as $field) {
                     $specific_items = explode("||", $field['value']);
                     $wpsct_required_item = '';
-                    if ($specific_items[1]=='required'){ 
+                    if ($specific_items[1]=='required'){
                         $wpsct_required_item = '<ins><div class="wpst-required-symbol" ' . $wpsct_style_inline . '>* </div></ins>';
                     }
                     $prev_val = $_SESSION['wpsct_custom_'.$field['primkey']];
@@ -177,23 +177,23 @@ if(!function_exists('wpsctPromptForCustomFields')) {
                         if($specific_items[2]==$wpsct_text_field) {
                             $output .= '<tr><td><h3>'. $specific_items[0] . $wpsct_required_item
                                 . '</h3><input  id="wpsct_custom_'.$field['primkey'].'" type="text"  value="'
-                                . $_SESSION['wpsct_custom_'.$field['primkey']] .'" name="wpsct_custom_'.$field['primkey'].'" ' 
+                                . $_SESSION['wpsct_custom_'.$field['primkey']] .'" name="wpsct_custom_'.$field['primkey'].'" '
                                 . $wpsct_style_width . '  /></td></tr>';
                         }
                     }
                     if ($specific_items[2] == 'textarea') {
                         $output .= '<tr><td><h3>' . $specific_items[0] . $wpsct_required_item
-                            . '</h3><textarea  id="wpsct_custom_' . $field['primkey'] . '" name="wpsct_custom_' 
-                            . $field['primkey'] . '" ' . $wpsct_style_width . '>' 
+                            . '</h3><textarea  id="wpsct_custom_' . $field['primkey'] . '" name="wpsct_custom_'
+                            . $field['primkey'] . '" ' . $wpsct_style_width . '>'
                             . $_SESSION['wpsct_custom_' . $field['primkey']] . '</textarea></td></tr>';
                     }
                     if($specific_items[2]=='states' || $specific_items[2]=='taxstates') {
                         $selected[$prev_val] = ' selected="selected"';
-                        $output .= '<tr><td><h3>'. $specific_items[0] . $wpsct_required_item 
+                        $output .= '<tr><td><h3>'. $specific_items[0] . $wpsct_required_item
                             . '</h3><select name="wpsct_custom_'.$field['primkey'].'" class="wpsct-states" ' . $wpsct_style_width . ">\n"
-                            . "<option value=\"not applicable\" {$selected['']}>" . __('Other (Non-US)', 'wpsc-support-tickets').'</option>'; 
+                            . "<option value=\"not applicable\" {$selected['']}>" . __('Other (Non-US)', 'wpsc-support-tickets').'</option>';
                         foreach ($wpsct_states as $wpsct_code => $wpcst_state) {
-                            $output .="<option value=\"$wpsct_code\" {$selected[$wpsct_code]}>" . __($wpcst_state, 'wpsc-support-tickets').'</option>\n'; 
+                            $output .="<option value=\"$wpsct_code\" {$selected[$wpsct_code]}>" . __($wpcst_state, 'wpsc-support-tickets').'</option>\n';
                         }
                         $output.= '</select></td></tr>';
                     }
@@ -202,9 +202,9 @@ if(!function_exists('wpsctPromptForCustomFields')) {
                             . '</h3><select  name="wpsct_custom_'.$field['primkey'].'" class="wpsct-countries" '. $wpsct_style_width . ">\n";
                         $selected[$prev_val] = ' selected="selected"';
                         foreach ($wpsct_countries as $wpsct_country) {
-                            $output .="<option value=\"$wpsct_country\" {$selected[$wpsct_country]}>" . __($wpsct_country, 'wpsc-support-tickets').'</option>\n'; 
+                            $output .="<option value=\"$wpsct_country\" {$selected[$wpsct_country]}>" . __($wpsct_country, 'wpsc-support-tickets').'</option>\n';
                         }
-                        $output.= '</select></td></tr>';                    
+                        $output.= '</select></td></tr>';
                     }
                     if($specific_items[2]=='email') {
                         $output .= '<tr><td><h3>'. $specific_items[0] . $wpsct_required_item
@@ -224,7 +224,7 @@ if(!function_exists('wpsctPromptForCustomFields')) {
                     /** Added in 4.4.4 **/
                     if($specific_items[2]=='dropdown') {
                         $grabrecordz = "SELECT * FROM `{$table_name33}` WHERE `type`='wpst-custom-fields-mc' AND `foreignkey`='{$field['primkey']}';";
-                        $resultszz = $wpdb->get_results( $grabrecordz , ARRAY_A );                         
+                        $resultszz = $wpdb->get_results( $grabrecordz , ARRAY_A );
                         if(@isset($resultszz[0]['primkey'])) {
                             $zzzoptions = explode(',', rtrim($resultszz[0]['value'], ',' ) );
                             $output .= '<tr><td><h3>'. $specific_items[0] . $wpsct_required_item . '</h3>';
@@ -238,7 +238,7 @@ if(!function_exists('wpsctPromptForCustomFields')) {
                     }
                     if($specific_items[2]=='checkbox') {
                         $grabrecordz = "SELECT * FROM `{$table_name33}` WHERE `type`='wpst-custom-fields-mc' AND `foreignkey`='{$field['primkey']}';";
-                        $resultszz = $wpdb->get_results( $grabrecordz , ARRAY_A );                         
+                        $resultszz = $wpdb->get_results( $grabrecordz , ARRAY_A );
                         if(@isset($resultszz[0]['primkey'])) {
                             $zzzoptions = explode(',', rtrim($resultszz[0]['value'], ',' ) );
                             $output .= '<tr><td><h3>'. $specific_items[0] . $wpsct_required_item . '</h3>';
@@ -246,11 +246,11 @@ if(!function_exists('wpsctPromptForCustomFields')) {
                                 $output .= '   <input type="checkbox" name="wpsct_custom_'.$field['primkey'].'[]" value="'.$zzzoption.'"></input> '.$zzzoption.'<br />';
                             }
                             $output .= '</td></tr>';
-                        }                        
+                        }
                     }
                     if($specific_items[2]=='radio') {
                         $grabrecordz = "SELECT * FROM `{$table_name33}` WHERE `type`='wpst-custom-fields-mc' AND `foreignkey`='{$field['primkey']}';";
-                        $resultszz = $wpdb->get_results( $grabrecordz , ARRAY_A );                         
+                        $resultszz = $wpdb->get_results( $grabrecordz , ARRAY_A );
                         if(@isset($resultszz[0]['primkey'])) {
                             $zzzoptions = explode(',', rtrim($resultszz[0]['value'], ',' ) );
                             $output .= '<tr><td><h3>'. $specific_items[0] . $wpsct_required_item . '</h3>';
@@ -258,11 +258,11 @@ if(!function_exists('wpsctPromptForCustomFields')) {
                                 $output .= '   <input type="radio" name="wpsct_custom_'.$field['primkey'].'" value="'.$zzzoption.'"></input> '.$zzzoption.'<br />';
                             }
                             $output .= '</td></tr>';
-                        }                              
-                    }                    
-                    
+                        }
+                    }
+
                 }
-        }       
+        }
 
         return $output;
     }
@@ -283,16 +283,16 @@ if (!class_exists("wpscSupportTickets")) {
         var $hasDisplayedCompat2 = false; // hack for Jetpack compatibility
 
         /**
-         * 
+         *
          * @deprecated since version 5.0
          * @global object $wp_roles
          */
         function wpscSupportTickets() { //constructor
             // Let's make sure the admin is always in charge
             if (function_exists('is_multisite') && is_multisite()) {
-                
+
             } else {
-                $this->addPermissions(); // 
+                $this->addPermissions(); //
             }
         }
 
@@ -306,9 +306,9 @@ if (!class_exists("wpscSupportTickets")) {
         function checkPermissions() {
             if ( !is_super_admin() || (function_exists('current_user_can') && !current_user_can('manage_wpsct_support_tickets')) ) {
                 die(__('Unable to Authenticate', 'wpsc-support-tickets'));
-            }            
+            }
         }
-        
+
         function addPermissions() {
             if (is_user_logged_in()) {
                 if (is_super_admin() || is_admin()) {
@@ -329,11 +329,11 @@ if (!class_exists("wpscSupportTickets")) {
                     $wp_roles->add_cap('wpsct_support_ticket_manager', 'bbp_replies_admin');
                     $wp_roles->add_cap('administrator', 'manage_wpsct_support_tickets');
                 }
-            }            
+            }
         }
-        
+
         /**
-         * 
+         *
          * @param string $e
          * @return string
          */
@@ -341,25 +341,25 @@ if (!class_exists("wpscSupportTickets")) {
             $settings = $this->getAdminOptions();
             return $settings['email'];
         }
-        
+
         /**
-         * 
+         *
          * @param string $n
          * @return string
-         */         
+         */
         function change_mail_name( $n ) {
             $settings = $this->getAdminOptions();
             return $settings['email_name'];
-        }       
-        
-        
+        }
+
+
         /**
          * Returns an array of admin options
          * @return array
          */
         function getAdminOptions() {
 
-            // Default values.  
+            // Default values.
             $apAdminOptions = array('mainpage' => '',
                 'turnon_wpscSupportTickets' => 'true',
                 'departments' => __('Support', 'wpsc-support-tickets') . '||' . __('Billing', 'wpsc-support-tickets'),
@@ -382,15 +382,15 @@ if (!class_exists("wpscSupportTickets")) {
                 'department_admins' => 'default',
                 'email_name' => __('Support', 'wpsc-support-tickets'),
                 'hide_email_on_frontend_list' => 'false'
-            );             
-            
+            );
+
             if ($this->wpscstSettings != NULL) { // If we haven't cached stuff already
                 $devOptions = $this->wpscstSettings; // Caches the settings array so that we don't keep reinitializing it
             } else {
                 $devOptions = get_option($this->adminOptionsName);
             }
             if (!empty($devOptions)) { // If the default values don't exist.
-                     
+
                 foreach ($devOptions as $key => $option) {
                     $apAdminOptions[$key] = $option;
                 }
@@ -400,14 +400,14 @@ if (!class_exists("wpscSupportTickets")) {
         }
 
         /**
-         * Admin Header 
+         * Admin Header
          */
         function adminHeader() {
 
             $this->checkPermissions();
 
             echo '
-            
+
             <div style="padding: 20px 10px 10px 10px;">';
 
             if (!function_exists('wpscSupportTicketsPRO')) {
@@ -429,7 +429,7 @@ if (!class_exists("wpscSupportTickets")) {
          * Added in wpsc Support Tickets v5.0
          */
         function printAdminPageDepartments() {
-      
+
             $devOptions = $this->getAdminOptions();
 
             echo '<div class="wrap">';
@@ -438,13 +438,13 @@ if (!class_exists("wpscSupportTickets")) {
             wpscSupportTickets_departmentsHook(); // Action hook for departments
 
             echo '</div>';
-        }        
-        
+        }
+
         /*
          * Admin page for Settings
          */
         function printAdminPageSettings() {
-            
+
             wpscSupportTickets_saveSettings(); // Action hook for saving
 
             $devOptions = $this->getAdminOptions();
@@ -487,16 +487,16 @@ if (!class_exists("wpscSupportTickets")) {
                 }
                 if (isset($_POST['custom_field_position'])) {
                     $devOptions['custom_field_position'] = esc_sql($_POST['custom_field_position']);
-                }     
+                }
                 if (isset($_POST['custom_field_frontend_position'])) {
                     $devOptions['custom_field_frontend_position'] = esc_sql($_POST['custom_field_frontend_position']);
-                }  
+                }
                 if (isset($_POST['use_ticket_in_email'])) {
                     $devOptions['use_ticket_in_email'] = esc_sql($_POST['use_ticket_in_email']);
-                } 
+                }
                 if (isset($_POST['use_reply_in_email'])) {
                     $devOptions['use_reply_in_email'] = esc_sql($_POST['use_reply_in_email']);
-                }          
+                }
                 if (isset($_POST['display_severity_on_create'])) {
                     $devOptions['display_severity_on_create'] = esc_sql($_POST['display_severity_on_create']);
                 }
@@ -505,7 +505,7 @@ if (!class_exists("wpscSupportTickets")) {
                 }
                 if(isset($_POST['hide_email_on_frontend_list'])) {
                     $devOptions['hide_email_on_frontend_list'] = esc_sql($_POST['hide_email_on_frontend_list']);
-                }                
+                }
 
                 update_option($this->adminOptionsName, $devOptions);
 
@@ -515,7 +515,7 @@ if (!class_exists("wpscSupportTickets")) {
             }
 
             echo '
-                
+
             <script type="text/javascript">
                 jQuery(function() {
                     jQuery( "#wst_tabs" ).tabs();
@@ -524,14 +524,14 @@ if (!class_exists("wpscSupportTickets")) {
             </script>
 
             <form method="post" action="' . $_SERVER["REQUEST_URI"] . '">
-                
+
 
         <div id="wst_tabs" style="padding:5px 5px 0px 5px;font-size:1.1em;border-color:#DDD;border-radius:6px;">
             <ul>
                 <li><a href="#wst_tabs-1">' . __('Settings', 'wpsc-support-tickets') . '</a></li>
                 <li><a href="#wst_tabs-2">' . __('PRO', 'wpsc-support-tickets') . '</a></li>
-            </ul>        
-            
+            </ul>
+
 
             <div id="wst_tabs-1">
 
@@ -557,19 +557,19 @@ if (!class_exists("wpscSupportTickets")) {
                     echo $option;
                 }
 
-                
+
                     echo '
                     </select>
                     </p>';
 
                     // Brand new Departments management coming in version 5
                     if (!function_exists('wpscSupportTicketDepartments')) {
-                        echo ' 
+                        echo '
                         <strong>' . __('Departments', 'wpsc-support-tickets') . ':</strong> ' . __('Separate these values with a double pipe, like this ||', 'wpsc-support-tickets') . ' <br /><input name="departments" value="' . $devOptions['departments'] . '" style="width:95%;" /><br /><br />
 
         ';
                     }
-                
+
                 echo '<p><strong>' . __('Allow user to select Severity on ticket creation?', 'wpsc-support-tickets') . ':</strong> ' . __('Set this to true if you want the user to select the severity of their ticket when creating it.', 'wpsc-support-tickets') . '  <br />
                 <select name="display_severity_on_create">
                  ';
@@ -589,19 +589,19 @@ if (!class_exists("wpscSupportTickets")) {
 
                 echo '
                 </select>
-                </p> 
-                
+                </p>
+
             </td></tr></table>
             <br /><br /><br />
             <h1>' . __('Email', 'wpsc-support-tickets') . '</h1>
-            <table class="widefat" style="background:transparent;"><tr><td>                
+            <table class="widefat" style="background:transparent;"><tr><td>
 
                 <strong>' . __('Email', 'wpsc-support-tickets') . ':</strong> ' . __('The admin email where all new ticket &amp; reply notification emails will be sent', 'wpsc-support-tickets') . '<br /><input name="email" value="' . $devOptions['email'] . '" style="width:95%;" /><br /><br />
                 <strong>' . __('Name Sent From', 'wpsc-support-tickets') .'</strong> '. __('The name of the admin email sender, such as "Business Name Support Team", or whatever is appropriate for your situation.', 'wpsc-support-tickets') .'<br /><input name="email_name" value="' . $devOptions['email_name'] . '" style="width:95%;" /><br /><br />
                 <strong>' . __('New Ticket Email', 'wpsc-support-tickets') . '</strong> ' . __('The subject &amp; body of the email sent to the customer when creating a new ticket.', 'wpsc-support-tickets') . '<br /><input name="email_new_ticket_subject" value="' . stripslashes(stripslashes($devOptions['email_new_ticket_subject'])) . '" style="width:95%;" />
                 <textarea style="width:95%;" name="email_new_ticket_body">' . stripslashes(stripslashes($devOptions['email_new_ticket_body'])) . '</textarea>
                 <br /><br />
-                
+
                 <p><strong>' . __('Include the ticket in New Ticket Email', 'wpsc-support-tickets') . ':</strong> ' . __('Set this to true if you want the content of the ticket included in the new ticket email.', 'wpsc-support-tickets') . '  <br />
                 <select name="use_ticket_in_email">
                  ';
@@ -626,7 +626,7 @@ if (!class_exists("wpscSupportTickets")) {
                 <strong>' . __('New Reply Email', 'wpsc-support-tickets') . '</strong> ' . __('The subject &amp; body of the email sent to the customer when there is a new reply.', 'wpsc-support-tickets') . '<br /><input name="email_new_reply_subject" value="' . stripslashes(stripslashes($devOptions['email_new_reply_subject'])) . '" style="width:95%;" />
                 <textarea style="width:95%;" name="email_new_reply_body">' . stripslashes(stripslashes($devOptions['email_new_reply_body'])) . '</textarea>
                 <br /><br />
-                
+
                 <p><strong>' . __('Include the reply in New Reply Email', 'wpsc-support-tickets') . ':</strong> ' . __('Set this to true if you want the content of the reply included in the new reply email.', 'wpsc-support-tickets') . '  <br />
                 <select name="use_reply_in_email">
                  ';
@@ -651,7 +651,7 @@ if (!class_exists("wpscSupportTickets")) {
             </td></tr></table>
             <br /><br /><br />
             <h1>' . __('Styling', 'wpsc-support-tickets') . '</h1>
-            <table class="widefat" style="background:transparent;"><tr><td> 
+            <table class="widefat" style="background:transparent;"><tr><td>
 
                 <p><strong>' . __('Disable inline styles', 'wpsc-support-tickets') . ':</strong> ' . __('Set this to true if you want to disable the inline CSS styles.', 'wpsc-support-tickets') . '  <br />
                 <select name="disable_inline_styles">
@@ -678,7 +678,7 @@ if (!class_exists("wpscSupportTickets")) {
             </td></tr></table>
             <br /><br /><br />
             <h1>' . __('Guests', 'wpsc-support-tickets') . '</h1>
-            <table class="widefat" style="background:transparent;"><tr><td> 
+            <table class="widefat" style="background:transparent;"><tr><td>
 
                 <p><strong>' . __('Allow Guests', 'wpsc-support-tickets') . ':</strong> ' . __('Set this to true if you want Guests to be able to use the support ticket system.', 'wpsc-support-tickets') . '  <br />
                 <select name="allow_guests">
@@ -700,7 +700,7 @@ if (!class_exists("wpscSupportTickets")) {
                 echo '
                 </select>
                 </p>
-                
+
                 <p><strong>' . __('Show guest email address in front end list', 'wpsc-support-tickets') . ':</strong> ' . __('Set this to true and a guest\'s email address will be displayed in the ticket list.', 'wpsc-support-tickets') . '  <br />
                 <select name="hide_email_on_frontend_list">
                  ';
@@ -725,7 +725,7 @@ if (!class_exists("wpscSupportTickets")) {
             </td></tr></table>
             <br /><br /><br />
             <h1>' . __('Custom Fields', 'wpsc-support-tickets') . '</h1>
-            <table class="widefat" style="background:transparent;"><tr><td> 
+            <table class="widefat" style="background:transparent;"><tr><td>
 
                 <p><strong>' . __('Place custom form fields', 'wpsc-support-tickets') . ':</strong> ' . __('When creating a ticket, this determines where your custom fields are placed on the ticket submission form.', 'wpsc-support-tickets') . '  <br />
                 <select name="custom_field_position">
@@ -772,7 +772,7 @@ if (!class_exists("wpscSupportTickets")) {
 
                 echo '
                 </select>
-                </p>               
+                </p>
                 <br /><br /><br /><br />
             </td></tr></table>
 
@@ -784,18 +784,18 @@ if (!class_exists("wpscSupportTickets")) {
 
             echo '
                 </div>
-            
+
 
             <input type="hidden" name="update_wpscSupportTicketsSettings" value="update" />
             <div style="float:right;position:relative;top:-20px;"> <input class="button-primary" style="position:relative;z-index:999999;" type="submit" name="update_wpscSupportTicketsSettings_submit" value="';
             _e('Update Settings', 'wpsc-support-tickets');
             echo'" /></div>
-            
+
 
             </div>
             </div>
             </form>
-            
+
 
         ';
 
@@ -814,16 +814,16 @@ if (!class_exists("wpscSupportTickets")) {
         function printAdminPageStats() {
 
             echo '<div class="wrap">';
-            
+
             $this->adminHeader();
-                        
-            
-            
+
+
+
             if (@!function_exists('wpscSupportTicketsPRO') ) {
                 echo '<table class="widefat" style="width:98%;"><tr><td>';
                 echo '
-                                
-                                <h2>'.__('Upgrade now to wpsc Support Tickets PRO and unlock in depth statistics for the following and more:', 'wpsc-support-tickets').'</h2> 
+
+                                <h2>'.__('Upgrade now to wpsc Support Tickets PRO and unlock in depth statistics for the following and more:', 'wpsc-support-tickets').'</h2>
                                     <ul>
                                         <li>'.__('Average ticket resolution time', 'wpsc-support-tickets').'</li>
                                         <li>'.__('Number of tickets created in each category', 'wpsc-support-tickets').'</li>
@@ -836,15 +836,15 @@ if (!class_exists("wpscSupportTickets")) {
                                         <li>'.__('And much more, upgrade to PRO today:', 'wpsc-support-tickets').'</li>
                                     </ul>
                                     <div id="buyprostats"><strong>$19.99 USD</strong><br /></div>
-                                
-                              
+
+
                                 ';
                 echo '</td></tr></table>
                 <script type="text/javascript">
                 jQuery(document).ready(function() {
                     jQuery(\'#buyprostats\').append(\'<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="REYXW5BR8H5MU"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>\');
                 });
-                </script>  ';                    
+                </script>  ';
             } else {
                 if(@function_exists('wstPROStats')) {
                     @set_time_limit(0);
@@ -856,11 +856,11 @@ if (!class_exists("wpscSupportTickets")) {
                 }
 
             }
-                
-            
-            
+
+
+
             echo '</div>';
-            
+
         }
 
         //Prints out the admin page ================================================================================
@@ -874,7 +874,7 @@ if (!class_exists("wpscSupportTickets")) {
                             jQuery(function() {
                                 jQuery( "#wst_tabs" ).tabs();
                             });
-                        </script>                            
+                        </script>
                         <div class="wrap">';
 
             $this->adminHeader();
@@ -887,7 +887,7 @@ if (!class_exists("wpscSupportTickets")) {
 
             wpscSupportTickets_extraTabsIndex();
             echo '
-                        </ul>                             
+                        </ul>
 
                         ';
 
@@ -968,17 +968,17 @@ if (!class_exists("wpscSupportTickets")) {
             wpscSupportTickets_extraTabsContents();
 
             echo '
-			</div></div>';
+                        </div></div>';
         }
 
-        
+
         function printAdminPageFields() {
             global $wpdb;
 
             echo '<div class="wrap">';
 
             $this->adminHeader();
-            
+
             if (@isset($_POST['required_info_key']) && @isset($_POST['required_info_name']) && @isset($_POST['required_info_type'])) {
                 $arrayCounter = 0;
                 $table_name777 = $wpdb->prefix . "wpstorecart_meta";
@@ -987,24 +987,24 @@ if (!class_exists("wpscSupportTickets")) {
                     $wpdb->query($updateSQL);
                     $arrayCounter++;
                 }
-            }             
-            
+            }
+
 
             echo '<br style="clear:both;" /><br />
-            
+
             <h2>'.__('','wpsc-support-tickets').'</h2>
 
              <script type="text/javascript">
                 /* <![CDATA[ */
 
                 function addwpscfield() {
-                
+
                     temp_mc_var = "";
-                    
+
                     jQuery(".custom_field_mc").each(function() {
                         temp_mc_var = temp_mc_var + jQuery(this).val() + ",";
                     });
-                    
+
                     jQuery.ajax({ url: ajaxurl, type:"POST", data:"action=wpsct_add_field&createnewfieldname="+jQuery("#createnewfieldname").val()+"&createnewfieldtype="+jQuery("#createnewfieldtype").val()+"&createnewfieldrequired="+jQuery("input:radio[name=createnewfieldrequired]:checked").val()+"&customfieldmc="+temp_mc_var.toString(), success: function(txt){
                         jQuery("#requiredul").prepend("<li style=\'font-size:90%;cursor:move;background-color: #EDEDED; border: 1px solid #DDDDDD;padding:4px 0 4px 30px;margin:8px;\' id=\'requiredinfo_"+txt+"\'><img onclick=\'delwpscfield("+txt+");\' style=\'cursor:pointer;position:relative;top:4px;\' src=\''.plugins_url().'/wpsc-support-tickets/images/delete.png\' /><input type=\'text\' value=\'"+jQuery("#createnewfieldname").val()+"\' name=\'required_info_name[]\' /><input type=\'hidden\' name=\'required_info_key[]\' value=\'"+txt+"\' /><select name=\'required_info_type[]\' id=\'ri_"+txt+"\'><option value=\'firstname\'>'.__('First name', 'wpsc-support-tickets').'</option><option value=\'lastname\'>'.__('Last name', 'wpsc-support-tickets').'</option><option value=\'shippingaddress\'>'.__('Address', 'wpsc-support-tickets').'</option><option value=\'shippingcity\'>'.__('City', 'wpsc-support-tickets').'</option><option value=\'taxstates\'>'.__('US States', 'wpsc-support-tickets').'</option><option value=\'taxcountries\'>'.__('Countries', 'wpsc-support-tickets').'</option><option value=\'zipcode\'>'.__('Zipcode', 'wpsc-support-tickets').'</option><option value=\'email\'>'.__('Email Address', 'wpsc-support-tickets').'</option><option value=\'input (text)\'>'.__('Input (text)', 'wpsc-support-tickets').'</option><option value=\'input (numeric)\'>'.__('Input (numeric)', 'wpsc-support-tickets').'</option><option value=\'textarea\'>'.__('Input textarea', 'wpsc-support-tickets').'</option><option value=\'dropdown\'>'.__('Input Dropdown list', 'wpsc-support-tickets').'</option><!--<option value=\'checkbox\'>'.__('Input Checkbox', 'wpsc-support-tickets').'</option>--><option value=\'radio\'>'.__('Input Radio button', 'wpsc-support-tickets').'</option><option value=\'separator\'>--- '.__('Separator', 'wpsc-support-tickets').' ---</option><option value=\'header\'>'.__('Header', 'wpsc-support-tickets').' &lt;h2&gt;&lt;/h2&gt;</option><option value=\'text\'>'.__('Text', 'wpsc-support-tickets').' &lt;p&gt;&lt;/p&gt;</option></select><label for=\'required_info_required_"+txt+"\'><input type=\'radio\' id=\'required_info_required_"+txt+"_yes\' name=\'required_info_required_"+txt+"\' value=\'required\' /> '.__('Required', 'wpsc-support-tickets').'</label>&nbsp;&nbsp;&nbsp;&nbsp;<label for=\'required_info_required_"+txt+"_no\'><input type=\'radio\' id=\'required_info_required_"+txt+"_no\' name=\'required_info_required_"+txt+"\' value=\'optional\' /> '.__('Optional', 'wpsc-support-tickets').'</label></li>");
                         //jQuery("#requiredul").prepend("<li style=\'font-size:90%;cursor:move;background-color: #EDEDED; border: 1px solid #DDDDDD;padding:4px 0 4px 30px;margin:8px;\' id=\'requiredinfo_"+txt+"\'><img onclick=\'delwpscfield("+txt+");\' style=\'cursor:pointer;position:relative;top:4px;\' src=\''.plugins_url().'/wpsc-support-tickets/images/delete.png\' /><input type=\'text\' value=\'"+jQuery("#createnewfieldname").val()+"\' name=\'required_info_name[]\' /><input type=\'hidden\' name=\'required_info_key[]\' value=\'"+txt+"\' /><select name=\'required_info_type[]\' id=\'ri_"+txt+"\'><option value=\'firstname\'>'.__('First name', 'wpsc-support-tickets').'</option><option value=\'lastname\'>'.__('Last name', 'wpsc-support-tickets').'</option><option value=\'shippingaddress\'>'.__('Address', 'wpsc-support-tickets').'</option><option value=\'shippingcity\'>'.__('City', 'wpsc-support-tickets').'</option><option value=\'taxstates\'>'.__('US States', 'wpsc-support-tickets').'</option><option value=\'taxcountries\'>'.__('Countries', 'wpsc-support-tickets').'</option><option value=\'zipcode\'>'.__('Zipcode', 'wpsc-support-tickets').'</option><option value=\'email\'>'.__('Email Address', 'wpsc-support-tickets').'</option><option value=\'input (text)\'>'.__('Input (text)', 'wpsc-support-tickets').'</option><option value=\'input (numeric)\'>'.__('Input (numeric)', 'wpsc-support-tickets').'</option><option value=\'textarea\'>'.__('Input textarea', 'wpsc-support-tickets').'</option><option value=\'dropdown\'>'.__('Input Dropdown list', 'wpsc-support-tickets').'</option><option value=\'checkbox\'>'.__('Input Checkbox', 'wpsc-support-tickets').'</option><option value=\'radio\'>'.__('Input Radio button', 'wpsc-support-tickets').'</option><option value=\'separator\'>--- '.__('Separator', 'wpsc-support-tickets').' ---</option><option value=\'header\'>'.__('Header', 'wpsc-support-tickets').' &lt;h2&gt;&lt;/h2&gt;</option><option value=\'text\'>'.__('Text', 'wpsc-support-tickets').' &lt;p&gt;&lt;/p&gt;</option></select><label for=\'required_info_required_"+txt+"\'><input type=\'radio\' id=\'required_info_required_"+txt+"_yes\' name=\'required_info_required_"+txt+"\' value=\'required\' /> '.__('Required', 'wpsc-support-tickets').'</label>&nbsp;&nbsp;&nbsp;&nbsp;<label for=\'required_info_required_"+txt+"_no\'><input type=\'radio\' id=\'required_info_required_"+txt+"_no\' name=\'required_info_required_"+txt+"\' value=\'optional\' /> '.__('Optional', 'wpsc-support-tickets').'</label></li>");
@@ -1025,7 +1025,7 @@ if (!class_exists("wpscSupportTickets")) {
                         jQuery("#requiredinfo_"+keytodel).remove();
                     }});
                 }
-                
+
                 function wpstCheckFieldType() {
                     if ( jQuery("#createnewfieldtype").val()=="dropdown" ||  jQuery("#createnewfieldtype").val()=="checkbox" ||  jQuery("#createnewfieldtype").val()=="radio" ) {
                         jQuery(".wpstAddNewAdditionalOptionButton").show();
@@ -1078,11 +1078,11 @@ if (!class_exists("wpscSupportTickets")) {
             $theOptionszz[8] = 'input (text)';$theOptionszzName[8] = __('Input (text)', 'wpsc-support-tickets');
             $theOptionszz[9] = 'input (numeric)';$theOptionszzName[9] = __('Input (numeric)', 'wpsc-support-tickets');
             $theOptionszz[10] = 'textarea';$theOptionszzName[10] = __('Input Textarea', 'wpsc-support-tickets');
-            
+
             $theOptionszz[11] = 'dropdown';$theOptionszzName[11] = __('Input Dropdown list', 'wpsc-support-tickets');
-            //$theOptionszz[12] = 'checkbox';$theOptionszzName[12] = __('Input Checkbox', 'wpsc-support-tickets');            
-            $theOptionszz[12] = 'radio';$theOptionszzName[12] = __('Input Radio button', 'wpsc-support-tickets');            
-            
+            //$theOptionszz[12] = 'checkbox';$theOptionszzName[12] = __('Input Checkbox', 'wpsc-support-tickets');
+            $theOptionszz[12] = 'radio';$theOptionszzName[12] = __('Input Radio button', 'wpsc-support-tickets');
+
             $theOptionszz[13] = 'separator';$theOptionszzName[13] = __('--- Separator ---', 'wpsc-support-tickets');
             $theOptionszz[14] = 'header';$theOptionszzName[14] = __('Header &lt;h2&gt;&lt;/h2&gt;', 'wpsc-support-tickets');
             $theOptionszz[15] = 'text';$theOptionszzName[15] = __('Text &lt;p&gt;&lt;/p&gt;', 'wpsc-support-tickets');
@@ -1105,14 +1105,14 @@ if (!class_exists("wpscSupportTickets")) {
             }
 
             echo '</select>  <button style="display:none;" id="wpstAddNewAdditionalOptionButton" class="button-secondary wpstAddNewAdditionalOptionButton" onclick="wpstCreateNewOption();return false;">'.__('Add additional option', 'wpsc-support-tickets').'</button>
-            
+
             <div id="wpsc-support-tickets-custom-field" style="margin-left:40px;display:none;">
-                |_ <input name="" class="custom_field_mc" /> 
+                |_ <input name="" class="custom_field_mc" />
             </div>
-            
+
 
             <br /><label for="createnewfieldrequired_yes"><input type="radio" id="createnewfieldrequired_yes" name="createnewfieldrequired" value="required" checked="checked" /> '.__('Required', 'wpsc-support-tickets').'</label>&nbsp;&nbsp;&nbsp;&nbsp;<label for="createnewfieldrequired_no"><input type="radio" id="createnewfieldrequired_no" name="createnewfieldrequired" value="optional" /> '.__('Optional', 'wpsc-support-tickets').'</label> <br /> <a href="#" style="margin-left:35%;" onclick="addwpscfield();return false;"> &nbsp;  &nbsp; <button class="button-primary"><img style="cursor:pointer;" src="'.plugins_url().'/wpsc-support-tickets/images/Add.png" /> '.__('Save New Field', 'wpsc-support-tickets').'</button></a></th></tr></thead>
-                
+
             <tbody><tr><td>
             <div id="requiredsort" style="margin:0 auto 0 auto;">
                 <ul id="requiredul" style="margin:0 auto 0 auto;list-style:none;">
@@ -1141,18 +1141,18 @@ if (!class_exists("wpscSupportTickets")) {
                                     echo $option;
                                     $icounter++;
                             }
-                            
+
                             echo '</select>';
-                            
-                            echo '<label for="required_info_required_'.$theKey.'"><input type="radio" id="required_info_required_'.$theKey.'_yes" name="required_info_required_'.$theKey.'" value="required" '; if ($exploder[1]=='required') { echo 'checked="checked"'; }; echo '/> '.__('Required', 'wpsc-support-tickets').'</label>&nbsp;&nbsp;&nbsp;&nbsp;<label for="required_info_required_'.$theKey.'_no"><input type="radio" id="required_info_required_'.$theKey.'_no" name="required_info_required_'.$theKey.'" value="optional" '; if ($exploder[1]=='optional') { echo 'checked="checked"'; }; echo '/> '.__('Optional', 'wpsc-support-tickets').'</label>'; 
-                            
+
+                            echo '<label for="required_info_required_'.$theKey.'"><input type="radio" id="required_info_required_'.$theKey.'_yes" name="required_info_required_'.$theKey.'" value="required" '; if ($exploder[1]=='required') { echo 'checked="checked"'; }; echo '/> '.__('Required', 'wpsc-support-tickets').'</label>&nbsp;&nbsp;&nbsp;&nbsp;<label for="required_info_required_'.$theKey.'_no"><input type="radio" id="required_info_required_'.$theKey.'_no" name="required_info_required_'.$theKey.'" value="optional" '; if ($exploder[1]=='optional') { echo 'checked="checked"'; }; echo '/> '.__('Optional', 'wpsc-support-tickets').'</label>';
+
                             // If we're dealing with a dropdown, checkbox, or radio
                             //if ($exploder[2] == 'dropdown' || $exploder[2] == 'radio' || $exploder[2] == 'checkbox' ) {
                             //    echo '<br />';
-                                
+
                             //    echo '|_ <input name="" class="custom_field_mc" /> <button class="button-secondary wpstAddNewAdditionalOptionButtonInEdit" onclick="return false;">'.__('Add additional option', 'wpsc-support-tickets').'</button>';
-                            //}                            
-                            
+                            //}
+
                             echo '</li>
                                 ';
                         }
@@ -1167,31 +1167,31 @@ if (!class_exists("wpscSupportTickets")) {
             </td></tr></tbody></table>
 
             </form>
-            <br style="clear:both;" /><br />';            
-            
-            
+            <br style="clear:both;" /><br />';
+
+
             echo '</div>';
         }
-        
-        //END Prints out the admin page ================================================================================		
+
+        //END Prints out the admin page ================================================================================
 
         function printAdminPageCreateTicket() {
 
             $devOptions = $this->getAdminOptions();
             $devOptions['disable_inline_styles'] = 'false';
-            
+
             echo '<div class="wrap">';
 
             $this->adminHeader();
 
             echo  '<br style="clear:both;" /><br />';
-            
+
             echo  '<form action="' . plugins_url('/php/submit_ticket.php', __FILE__) . '" method="post" enctype="multipart/form-data">';
 
-            
-            
 
-            
+
+
+
             echo  '<input type="hidden" name="admin_created_ticket" value="true" />';
             if (@isset($_POST['guest_email'])) {
                 echo  '<input type="hidden" name="guest_email" value="' . esc_sql($_POST['guest_email']) . '" />';
@@ -1204,19 +1204,19 @@ if (!class_exists("wpscSupportTickets")) {
 
             echo  '<tr><td><h3>' . __('Create ticket on behalf of user', 'wpsc-support-tickets') . ':</h3>';
             echo '<select name="wpscst_ticket_creator_assign" id="wpscst_ticket_creator_assign">';
-            global $blog_id; 
+            global $blog_id;
             $wpscBlogUsers = get_users("blog_id={$blog_id}&orderby=nicename");
             if(isset($wpscBlogUsers[0])) {
                 foreach ($wpscBlogUsers as $wpscTempUser) {
                     echo  "<option value=\"{$wpscTempUser->ID}\">". htmlentities($wpscTempUser->display_name)."</option> ";
-                }         
+                }
             }
-            echo '</select>';            
-            echo '</td></tr>';                   
-            
+            echo '</select>';
+            echo '</td></tr>';
+
             if($devOptions['custom_field_position'] == 'before everything') {
                 echo  wpsctPromptForCustomFields();
-            }                            
+            }
 
             echo  '<tr><td><h3>' . __('Title', 'wpsc-support-tickets') . '</h3><input type="text" name="wpscst_title" id="wpscst_title" value=""  ';
             if ($devOptions['disable_inline_styles'] == 'false') {
@@ -1225,7 +1225,7 @@ if (!class_exists("wpscSupportTickets")) {
 
             if($devOptions['custom_field_position'] == 'before message') {
                 echo  wpsctPromptForCustomFields();
-            }                            
+            }
 
             echo  '<tr><td><h3>' . __('Your message', 'wpsc-support-tickets') . '</h3><div id="wpscst_nic_panel" ';
             if ($devOptions['disable_inline_styles'] == 'false') {
@@ -1233,7 +1233,7 @@ if (!class_exists("wpscSupportTickets")) {
             } echo '></div> <textarea name="wpscst_initial_message" id="wpscst_initial_message" ';
             if ($devOptions['disable_inline_styles'] == 'false') {
                 echo 'style="display:inline;width:100%;margin:0 auto 0 auto;" rows="5"';
-            } echo '></textarea></td></tr>';                            
+            } echo '></textarea></td></tr>';
 
             if($devOptions['custom_field_position'] == 'after message') {
                 echo  wpsctPromptForCustomFields();
@@ -1246,7 +1246,7 @@ if (!class_exists("wpscSupportTickets")) {
 
             if($devOptions['custom_field_position'] == 'after everything') {
                 echo  wpsctPromptForCustomFields();
-            }                            
+            }
 
             echo  '<tr><td><h3>' . __('Department', 'wpsc-support-tickets') . '</h3><select name="wpscst_department" id="wpscst_department">';
             if (isset($exploder[0])) {
@@ -1275,8 +1275,8 @@ if (!class_exists("wpscSupportTickets")) {
             . '<style>#wpfooter {position:relative;top:-45px;}</style>';
 
         }
-        
-        
+
+
         function printAdminPageEdit() {
             global $wpdb;
 
@@ -1317,12 +1317,12 @@ if (!class_exists("wpscSupportTickets")) {
                     $messageWhole .= $messagePart;
                 }
                 echo '<tbody><tr><td id="wpscst_results_initial_message"><br />' . $messageWhole;
-                
+
                 echo '</tbody></table>';
 
                 // Custom fields
                 $table_name33 = $wpdb->prefix . "wpstorecart_meta";
-                
+
                 $grabrecord = "SELECT * FROM `{$table_name33}` WHERE `type`='wpst-requiredinfo' ORDER BY `foreignkey` ASC;";
 
                 $resultscf = $wpdb->get_results( $grabrecord , ARRAY_A );
@@ -1336,9 +1336,9 @@ if (!class_exists("wpscSupportTickets")) {
 
                             }
                         }
-                        echo '</tbody></table>';                        
-                }                
-                
+                        echo '</tbody></table>';
+                }
+
 
                 $sql = "SELECT * FROM `{$wpdb->prefix}wpscst_replies` WHERE `ticket_id`='{$primkey}' ORDER BY `timestamp` ASC;";
                 $result2 = $wpdb->get_results($sql, ARRAY_A);
@@ -1379,7 +1379,7 @@ if (!class_exists("wpscSupportTickets")) {
                                     jQuery(".nicEdit-main").width("100%");
                                     jQuery(".nicEdit-main").parent().width("100%");
                                     jQuery(".nicEdit-main").height("270px");
-                                    jQuery(".nicEdit-main").parent().height("270px");                                    
+                                    jQuery(".nicEdit-main").parent().height("270px");
                                     jQuery(".nicEdit-main").parent().css( "background-color", "white" );
                                 });
                             </script>
@@ -1388,13 +1388,13 @@ if (!class_exists("wpscSupportTickets")) {
             $output .= '<table class="wpscst-table" style="width:100%;display:none;">';
             $output .= '<tr><td><h3>' . __('Your message', 'wpsc-support-tickets') . '</h3><div id="wpscst_nic_panel2" style="display:block;width:100%;"></div> <textarea name="wpscst_reply" id="wpscst_reply" style="display:block;width:100%;margin:0 auto 0 auto;background-color:#FFF;" rows="5" columns="6"></textarea>';
             $output .= '</td></tr>';
-            
+
             if (!function_exists('wpscSupportTicketDepartments')) {
                 $exploder = explode('||', $devOptions['departments']);
             }
 
             $output .= '<tr><td><div style="float:left;"><h3>' . __('Department', 'wpsc-support-tickets') . '</h3><select name="wpscst_department" id="wpscst_department">';
-            
+
             if (!function_exists('wpscSupportTicketDepartments')) {
                 // Old department system
                 if (isset($exploder[0])) {
@@ -1408,40 +1408,40 @@ if (!class_exists("wpscSupportTickets")) {
             } else {
                 $output.= wpscSupportTicketsPROListDepartments();
             }
-            
+
             $output .= '</select></div>
                 <div style="float:left;margin-left:20px;"><h3>' . __('Severity', 'wpsc-support-tickets') . '</h3>
                     <select name="wpscst_severity">
                         <option value="Low"';
                             if ($results[0]['severity'] == 'Low') {
                                 $output.= ' selected="selected" ';
-                            } $output.='>            
+                            } $output.='>
                             ' . __('Low', 'wpsc-support-tickets') . '
-                        </option>                    
+                        </option>
                         <option value="Normal"';
                             if ($results[0]['severity'] == 'Normal') {
                                 $output.= ' selected="selected" ';
-                            } $output.='>            
+                            } $output.='>
                             ' . __('Normal', 'wpsc-support-tickets') . '
                         </option>
                         <option value="High"';
                             if ($results[0]['severity'] == 'High') {
                                 $output.= ' selected="selected" ';
-                            } $output.='>            
+                            } $output.='>
                             ' . __('High', 'wpsc-support-tickets') . '
-                        </option>       
+                        </option>
                         <option value="Urgent"';
                             if ($results[0]['severity'] == 'Urgent') {
                                 $output.= ' selected="selected" ';
-                            } $output.='>            
+                            } $output.='>
                             ' . __('Urgent', 'wpsc-support-tickets') . '
-                        </option> 
+                        </option>
                         <option value="Critical"';
                             if ($results[0]['severity'] == 'Critical') {
                                 $output.= ' selected="selected" ';
-                            } $output.='>            
+                            } $output.='>
                             ' . __('Critical', 'wpsc-support-tickets') . '
-                        </option>                        
+                        </option>
                     </select>
                 </div>
                         <div style="float:left;margin-left:20px;"><h3>' . __('Status', 'wpsc-support-tickets') . '</h3><select name="wpscst_status">
@@ -1461,7 +1461,7 @@ if (!class_exists("wpscSupportTickets")) {
             if ($devOptions['allow_uploads'] == 'true' && @function_exists('wpscSupportTicketsPRO')) {
                 $output .= '<div style="float:left;margin-left:20px;"><h3>' . __('Attach a file', 'wpsc-support-tickets') . '</h3> <input type="file" name="wpscst_file" id="wpscst_file"></div>';
             }
-            $output .='         
+            $output .='
                         <button class="button-secondary" onclick="if(confirm(\'' . __('Are you sure you want to cancel?', 'wpsc-support-tickets') . '\')){window.location = \'' . get_admin_url() . 'admin.php?page=wpscSupportTickets-admin\';}return false;"  style="float:right;" ><img style="float:left;border:none;margin-right:5px;" src="' . plugins_url('/images/stop.png', __FILE__) . '" alt="' . __('Cancel', 'wpsc-support-tickets') . '" /> ' . __('Cancel', 'wpsc-support-tickets') . '</button> <button class="button-primary" type="submit" name="wpscst_submit" id="wpscst_submit" style="float:right;margin:0 5px 0 5px;"><img style="float:left;border:none;margin-right:5px;" src="' . plugins_url('/images/page_white_text.png', __FILE__) . '" alt="' . __('Update Ticket', 'wpsc-support-tickets') . '" /> ' . __('Update Ticket', 'wpsc-support-tickets') . '</button></td></tr>';
 
 
@@ -1469,7 +1469,7 @@ if (!class_exists("wpscSupportTickets")) {
             echo $output;
 
             echo '
-			</div>';
+                        </div>';
         }
 
         // Dashboard widget code=======================================================================
@@ -1523,7 +1523,7 @@ if (!class_exists("wpscSupportTickets")) {
             }
             wp_enqueue_style('plugin_name-admin-ui-css', plugins_url('/css/custom-theme/jquery-ui-1.10.3.custom.css', __FILE__), false, 2, false);
         }
-        
+
         function addFieldsHeaderCode() {
             wp_enqueue_script('jquery-ui-core');
             wp_enqueue_script('jquery-ui-tabs');
@@ -1532,8 +1532,8 @@ if (!class_exists("wpscSupportTickets")) {
                 wp_enqueue_script('wpscstniceditor', plugins_url('/js/nicedit/nicEdit.js', __FILE__), array('jquery'), '1.3.2');
             }
             wp_enqueue_style('plugin_name-admin-ui-css', plugins_url('/css/custom-theme/jquery-ui-1.10.3.custom.css', __FILE__), false, 2, false);
-        }        
-        
+        }
+
         function addStatsHeaderCode() {
             wp_enqueue_script('jquery-ui-core');
             wp_enqueue_script('jquery-ui-tabs');
@@ -1541,14 +1541,14 @@ if (!class_exists("wpscSupportTickets")) {
                 wp_enqueue_script('wpscstniceditor', plugins_url('/js/nicedit/nicEdit.js', __FILE__), array('jquery'), '1.3.2');
             }
             wp_enqueue_style('plugin_name-admin-ui-css', plugins_url('/css/custom-theme/jquery-ui-1.10.3.custom.css', __FILE__), false, 2, false);
-            
+
             wp_enqueue_script('wpscstraphael', plugins_url().'/wpsc-support-tickets-pro/js/tufte-graph/raphael.js', array('jquery'), '1.3.2');
             wp_enqueue_script('wpscstenumerable', plugins_url().'/wpsc-support-tickets-pro/js/tufte-graph/jquery.enumerable.js', array('jquery'), '1.3.2');
             wp_enqueue_script('wpscsttufte', plugins_url().'/wpsc-support-tickets-pro/js/tufte-graph/jquery.tufte-graph.js', array('jquery'), '1.3.2');
             wp_enqueue_style('tufte-admin-ui-css', plugins_url().'/wpsc-support-tickets-pro/js/tufte-graph/tufte-graph.css', false, 2, false);
-        }        
+        }
 
-        function wpscSupportTickets_install($network) {   
+        function wpscSupportTickets_install($network) {
             global $wpdb;
             if (function_exists('is_multisite') && is_multisite()) {
                 if ($network) {
@@ -1561,12 +1561,12 @@ if (!class_exists("wpscSupportTickets")) {
                     }
                     switch_to_blog($old_blog);
                     return;
-                }  
+                }
             }
-            $this->wpscSupportTickets_activate();   
+            $this->wpscSupportTickets_activate();
         }
-        
-        // Installation ==============================================================================================		
+
+        // Installation ==============================================================================================
         function wpscSupportTickets_activate() {
             global $wpdb;
             global $wpscSupportTickets_db_version;
@@ -1575,20 +1575,20 @@ if (!class_exists("wpscSupportTickets")) {
             if ($wpdb->get_var("show tables like '$table_name'") != $table_name) {
 
                 $sql = "
-				CREATE TABLE `{$table_name}` (
-				`primkey` INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
-				`title` VARCHAR(512) NOT NULL, `initial_message` TEXT NOT NULL, 
-				`user_id` INT NOT NULL, `email` VARCHAR(256) NOT NULL, 
-				`assigned_to` INT NOT NULL DEFAULT '0', 
-				`severity` VARCHAR(64) NOT NULL, 
-				`resolution` VARCHAR(64) NOT NULL, 
-				`time_posted` VARCHAR(128) NOT NULL, 
-				`last_updated` VARCHAR(128) NOT NULL, 
-				`last_staff_reply` VARCHAR(128) NOT NULL, 
-				`target_response_time` VARCHAR(128) NOT NULL,
+                                CREATE TABLE `{$table_name}` (
+                                `primkey` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                                `title` VARCHAR(512) NOT NULL, `initial_message` TEXT NOT NULL,
+                                `user_id` INT NOT NULL, `email` VARCHAR(256) NOT NULL,
+                                `assigned_to` INT NOT NULL DEFAULT '0',
+                                `severity` VARCHAR(64) NOT NULL,
+                                `resolution` VARCHAR(64) NOT NULL,
+                                `time_posted` VARCHAR(128) NOT NULL,
+                                `last_updated` VARCHAR(128) NOT NULL,
+                                `last_staff_reply` VARCHAR(128) NOT NULL,
+                                `target_response_time` VARCHAR(128) NOT NULL,
                                 `type` VARCHAR( 255 ) NOT NULL
-				);				
-			";
+                                );
+                        ";
 
                 require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
                 dbDelta($sql);
@@ -1598,14 +1598,14 @@ if (!class_exists("wpscSupportTickets")) {
             if ($wpdb->get_var("show tables like '$table_name'") != $table_name) {
 
                 $sql = "
-				CREATE TABLE `{$table_name}` (
-				`primkey` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-				`ticket_id` INT NOT NULL ,
-				`user_id` INT NOT NULL ,
-				`timestamp` VARCHAR( 128 ) NOT NULL ,
-				`message` TEXT NOT NULL
-				);				
-			";
+                                CREATE TABLE `{$table_name}` (
+                                `primkey` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+                                `ticket_id` INT NOT NULL ,
+                                `user_id` INT NOT NULL ,
+                                `timestamp` VARCHAR( 128 ) NOT NULL ,
+                                `message` TEXT NOT NULL
+                                );
+                        ";
 
                 require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
                 dbDelta($sql);
@@ -1686,34 +1686,34 @@ if (!class_exists("wpscSupportTickets")) {
                             $output .= '<table class="wpscst-table" ';
                             if ($devOptions['disable_inline_styles'] == 'false') {
                                 $output.='style="width:100%"';
-                            } 
+                            }
                             $output .='><tr><th><img src="' . plugins_url('/images/Chat.png', __FILE__) . '" alt="' . __('Create a New Ticket', 'wpsc-support-tickets') . '" /> ' . __('Create a New Ticket', 'wpsc-support-tickets') . '</th></tr>';
 
                             if($devOptions['custom_field_position'] == 'before everything') {
                                 $output .= wpsctPromptForCustomFields();
-                            }                            
-                            
+                            }
+
                             $output .= '<tr><td><h3>' . __('Title', 'wpsc-support-tickets') . '</h3><input type="text" name="wpscst_title" id="wpscst_title" value=""  ';
                             if ($devOptions['disable_inline_styles'] == 'false') {
                                 $output.='style="width:100%"';
                             } $output .=' /></td></tr>';
-                            
+
                             if($devOptions['custom_field_position'] == 'before message') {
                                 $output .= wpsctPromptForCustomFields();
-                            }                            
-                            
+                            }
+
                             $output .= '<tr><td><h3>' . __('Your message', 'wpsc-support-tickets') . '</h3><div id="wpscst_nic_panel" ';
                             if ($devOptions['disable_inline_styles'] == 'false') {
                                 $output.='style="display:block;width:100%;"';
                             } $output.='></div> <textarea name="wpscst_initial_message" id="wpscst_initial_message" ';
                             if ($devOptions['disable_inline_styles'] == 'false') {
                                 $output.='style="display:inline;width:100%;margin:0 auto 0 auto;" rows="5"';
-                            } $output.='></textarea></td></tr>';                            
-                            
+                            } $output.='></textarea></td></tr>';
+
                             if($devOptions['custom_field_position'] == 'after message') {
                                 $output .= wpsctPromptForCustomFields();
                             }
-                            
+
                             if ($devOptions['allow_uploads'] == 'true') {
                                 $output .= '<tr><td><h3>' . __('Attach a file', 'wpsc-support-tickets') . '</h3> <input type="file" name="wpscst_file" id="wpscst_file"></td></tr>';
                             }
@@ -1721,38 +1721,38 @@ if (!class_exists("wpscSupportTickets")) {
 
                             if($devOptions['custom_field_position'] == 'after everything') {
                                 $output .= wpsctPromptForCustomFields();
-                            }                            
-                            
+                            }
+
                             $output .= '<tr><td><h3>' . __('Department', 'wpsc-support-tickets') . '</h3><select name="wpscst_department" id="wpscst_department">';
                             if (isset($exploder[0])) {
                                 foreach ($exploder as $exploded) {
                                     $output .= '<option value="' . $exploded . '">' . $exploded . '</option>';
                                 }
                             }
-                            $output .= '</select> 
+                            $output .= '</select>
                             <h3';
                             if ($devOptions['display_severity_on_create'] == 'false') {
-                               $output .=' style="display:none;" '; 
-                            }                            
+                               $output .=' style="display:none;" ';
+                            }
                             $output .='>' . __('Severity', 'wpsc-support-tickets') . '</h3><select name="wpscst_severity" id="wpscst_severity"';
                             if ($devOptions['display_severity_on_create'] == 'false') {
-                               $output .=' style="display:none;" '; 
+                               $output .=' style="display:none;" ';
                             }
                             $output .='>';
-                            $output .= '<option value="Low">'. __('Low', 'wpsc-support-tickets') . '</option>                    
+                            $output .= '<option value="Low">'. __('Low', 'wpsc-support-tickets') . '</option>
                             <option value="Normal">' . __('Normal', 'wpsc-support-tickets') . '
                             </option>
                             <option value="High">' . __('High', 'wpsc-support-tickets') . '
-                            </option>       
+                            </option>
                             <option value="Urgent">' . __('Urgent', 'wpsc-support-tickets') . '
-                            </option> 
+                            </option>
                             <option value="Critical">' . __('Critical', 'wpsc-support-tickets') . '
-                            </option>';  
-                            $output .= '</select>                                 
+                            </option>';
+                            $output .= '</select>
 
                                     <button class="wpscst-button" id="wpscst_cancel" onclick="cancelAdd();return false;"  ';
-                            
-                            
+
+
                             if ($devOptions['disable_inline_styles'] == 'false') {
                                 $output.='style="float:right;"';
                             } $output.=' ><img ';
@@ -1797,7 +1797,7 @@ if (!class_exists("wpscSupportTickets")) {
                                                         <select name="wpscst_set_status" id="wpscst_set_status">
                                                                             <option value="Open">' . __('Open', 'wpsc-support-tickets') . '</option>
                                                                             <option value="Closed">' . __('Closed', 'wpsc-support-tickets') . '</option>
-                                                                    </select>            
+                                                                    </select>
                                                         ';
                             }
 
@@ -1971,10 +1971,10 @@ if (!function_exists("wpscSupportTicketsAdminPanel")) {
             add_action("admin_print_scripts-$newTicketPage", array(&$wpscSupportTickets, 'addHeaderCode'));
             add_action("admin_print_scripts-$editPage", array(&$wpscSupportTickets, 'addHeaderCode'));
             if(@function_exists('wpscSupportTicketDepartments')) { // For wpsc Support Tickets v5.0+
-                add_action("admin_print_scripts-$departmentsPage", array(&$wpscSupportTickets, 'addHeaderCode')); 
+                add_action("admin_print_scripts-$departmentsPage", array(&$wpscSupportTickets, 'addHeaderCode'));
             }
             add_action("admin_print_scripts-$statsPage", array(&$wpscSupportTickets, $statsHeaderCode));
-            add_action("admin_print_scripts-$settingsPage", array(&$wpscSupportTickets, 'addHeaderCode'));            
+            add_action("admin_print_scripts-$settingsPage", array(&$wpscSupportTickets, 'addHeaderCode'));
             add_action("admin_print_scripts-$fieldsPage", array(&$wpscSupportTickets, 'addFieldsHeaderCode'));
         }
     }
@@ -2004,20 +2004,20 @@ if (class_exists("wpscSupportTickets")) {
     $wpscSupportTickets = new wpscSupportTickets();
 }
 
-//Actions and Filters   
+//Actions and Filters
 if (isset($wpscSupportTickets)) {
     //Actions
 
     register_activation_hook(__FILE__, array(&$wpscSupportTickets, 'wpscSupportTickets_install')); // Install DB schema
     add_action('wpsc-support-tickets/wpscSupportTickets.php', array(&$wpscSupportTickets, 'init')); // Create options on activation
-    
+
     add_action('wp_dashboard_setup', array(&$wpscSupportTickets, 'wpscSupportTickets_main_add_dashboard_widgets')); // Dashboard widget
     //add_action('wp_head', array(&$wpscSupportTickets, 'addHeaderCode')); // Place wpscSupportTickets comment into header
     add_shortcode('wpscSupportTickets', array(&$wpscSupportTickets, 'wpscSupportTickets_mainshortcode'));
-    
+
     add_action("wp_print_scripts", array(&$wpscSupportTickets, "addHeaderCode"));
     add_action('init', 'wpscLoadInit'); // Load other languages, and javascript
-    
+
     add_action('admin_menu', 'wpscSupportTicketsAdminPanel'); // Create admin panel
     add_filter( 'wp_mail_from', array(&$wpscSupportTickets, 'change_mail_from') );
     add_filter( 'wp_mail_from_name', array(&$wpscSupportTickets, 'change_mail_name') );
@@ -2036,7 +2036,7 @@ if (!function_exists('wpscSupportTicketsPRO')) {
             <option value="true">true</option><option value="false" selected="selected">false</option>
         </select>
         </p>
-        
+
         <p><strong>Who can view &amp; administrate all tickets:</strong> Users with the following roles will have full access to edit, reply to, close, re-open, and delete all tickets.  <br />
             <ul>
             <li><input type="checkbox" name="wstpro_admin[]" value="administrator" checked disabled /> Administrator</li><li><input type="checkbox" name="wstpro_admin[]" value="editor" disabled /> Editor</li><li><input type="checkbox" name="wstpro_admin[]" value="author" disabled /> Author</li><li><input type="checkbox" name="wstpro_admin[]"  value="contributor" disabled /> Contributor</li></ul>
@@ -2065,8 +2065,8 @@ if (!function_exists('wpscSupportTicketsPRO')) {
         <select name="allow_all_tickets_to_be_replied" disabled>
             <option value="false" selected="selected">false</option><option value="true">true</option>
         </select>
-        </p>     </div>       
-        
+        </p>     </div>
+
         <center><div style="border:3px solid red;width:40%;padding:10px;background:#FFF;position:relative;top:-480px;">Upgrade to wpsc Support Tickets PRO to unlock this page of settings, and much more, including:<br /><br /><ul style="text-align:left;font-size:0.8em;font-weight:bold;"><li>File Uploads & attachments (optional)</li><li>Minimum level to access admin panel can be set by admin</li><li>Bulk edit many tickets at a time</li><li>Send HTML Emails</li><li>Optionally allow all users to see all tickets</li><li>Advanced ticketing system with severity, categories, departments</li><li>Optionally allow users to reopen their own tickets</li> <li>Advanced ticket overview in admin panel</li>       <li>3 Premium Wordpress Themes</li>   </ul><br />$19.99 USD<br /><div  id="buypro"></div></div></center>
 
         ';
