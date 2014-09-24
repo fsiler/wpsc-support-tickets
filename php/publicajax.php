@@ -18,13 +18,13 @@ function wpsctDisplayCustomFieldsToFrontend($primkey) {
 
                 }
             }
-            echo '</tbody></table>';                        
-    }     
+            echo '</tbody></table>';
+    }
 }
 
 function wpsctLoadTicket() {
     global $current_user, $wpdb;
-    
+
     if (session_id() == "") {@session_start();};
 
     if((is_user_logged_in() || @isset($_SESSION['wpsct_email'])) && is_numeric($_POST['primkey'])) {
@@ -38,24 +38,24 @@ function wpsctLoadTicket() {
             $wpscst_username = $current_user->display_name;
         } else {
             $wpscst_userid = 0;
-            $wpscst_email = $wpdb->escape($_SESSION['wpsct_email']);   
+            $wpscst_email = $wpdb->escape($_SESSION['wpsct_email']);
             $wpscst_username = __('Guest', 'wpsc-support-tickets').' ('.$wpscst_email.')';
-        }    
+        }
 
         $primkey = intval($_POST['primkey']);
 
         if($devOptions['allow_all_tickets_to_be_viewed']=='true') {
             $sql = "SELECT * FROM `{$wpdb->prefix}wpscst_tickets` WHERE `primkey`='{$primkey}' LIMIT 0, 1;";
-        }                                                
+        }
         if($devOptions['allow_all_tickets_to_be_viewed']=='false') {
             $sql = "SELECT * FROM `{$wpdb->prefix}wpscst_tickets` WHERE `primkey`='{$primkey}' AND `user_id`='{$wpscst_userid}' AND `email`='{$wpscst_email}' LIMIT 0, 1;";
-        }    
+        }
 
         $results = $wpdb->get_results( $sql , ARRAY_A );
         if(isset($results[0])) {
             if($devOptions['allow_all_tickets_to_be_viewed']=='true') {
                 $wpscst_username = $results[0]['email'];
-            }        
+            }
             echo '<div id="wpscst_meta">';
 
             if($devOptions['custom_field_frontend_position']=='before everything') {
@@ -68,18 +68,18 @@ function wpsctLoadTicket() {
                 $resresolution = __('Closed', 'wpsc-support-tickets');
             } else {
                 $resresolution = $results[0]['resolution'];
-            }       
+            }
 
             if (!function_exists('wpscSupportTicketDepartments')) {
                 echo '<strong>'.base64_decode($results[0]['title']).'</strong> ('.$resresolution.' - '.base64_decode($results[0]['type']).')</div>';
             } else {
                 wpscSupportTicketsPRODepartments($results[0], $resresolution);
             }
-            
+
 
             if($devOptions['custom_field_frontend_position']=='before message') {
                 wpsctDisplayCustomFieldsToFrontend($primkey);
-            }        
+            }
 
             echo '<table style="width:100%;">';
             echo '<thead><tr><th id="wpscst_results_posted_by">'.__('Posted by', 'wpsc-support-tickets').' '.$wpscst_username.' (<span id="wpscst_results_time_posted">'.date_i18n( get_option( 'date_format' ),$results[0]['time_posted']).'</span>)</th></tr></thead>';
@@ -88,9 +88,9 @@ function wpsctLoadTicket() {
             $messageData = explode ( '\\', $messageData);
             $messageWhole = '';
             foreach ($messageData as $messagePart){
-             $messageWhole .= $messagePart;	
+             $messageWhole .= $messagePart;
             }
-            echo '<tbody><tr><td id="wpscst_results_initial_message"><br />'.$messageWhole;        
+            echo '<tbody><tr><td id="wpscst_results_initial_message"><br />'.$messageWhole;
 
             //echo '<tbody><tr><td id="wpscst_results_initial_message"><br />'.strip_tags(base64_decode($results[0]['initial_message']),'<p><br><a><br><strong><b><u><ul><li><strike><sub><sup><img><font>').'</td></tr>';
             echo '</tbody></table>';
@@ -121,7 +121,7 @@ function wpsctLoadTicket() {
                     $messageData = explode ( '\\', $messageData);
                     $messageWhole = '';
                     foreach ($messageData as $messagePart){
-                    $messageWhole .= $messagePart;	
+                    $messageWhole .= $messagePart;
                     }
                     echo '<tbody '.$classModifier3.'><tr><td class="wpscst_results_message"><br />'.$messageWhole.'</td></tr>';
                     echo '</tbody></table>';
@@ -130,14 +130,14 @@ function wpsctLoadTicket() {
 
             if($devOptions['custom_field_frontend_position']=='after message') {
                 wpsctDisplayCustomFieldsToFrontend($primkey);
-            } 
+            }
 
 
 
         }
     }
 
-    exit();    
+    exit();
 }
 add_action( 'wp_ajax_wpsct_save_issue', 'wpsctLoadTicket' );
 add_action( 'wp_ajax_nopriv_wpsct_save_issue', 'wpsctLoadTicket' );

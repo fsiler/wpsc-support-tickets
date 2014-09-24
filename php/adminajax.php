@@ -1,10 +1,10 @@
 <?php
 
 function wpsctAjaxAddField() {
-    
+
     global $current_user, $wpdb;
-    wp_get_current_user();    
-    
+    wp_get_current_user();
+
     if ( 0 == $current_user->ID ) {
         // Not logged in.
     } else {
@@ -31,7 +31,7 @@ function wpsctAjaxAddField() {
 
         $results = $wpdb->query($insert);
         $lastID = $wpdb->insert_id;
-        
+
 
         $customfieldmc = $wpdb->escape($_POST['customfieldmc']);
         if (@isset($customfieldmc) && trim($customfieldmc)!='') {
@@ -46,12 +46,12 @@ function wpsctAjaxAddField() {
             );
             ";
 
-            $results = $wpdb->query($insert);    
+            $results = $wpdb->query($insert);
         }
-        
+
         echo $lastID;
         exit();
-    }    
+    }
 }
 add_action( 'wp_ajax_wpsct_add_field', 'wpsctAjaxAddField' );
 
@@ -78,7 +78,7 @@ function wpsctAjaxDelField() {
         $results = $wpdb->query("DELETE FROM `{$table_name}` WHERE `type`='wpst-custom-fields-mc' AND `foreignkey`='{$delete}';");
 
 
-    }    
+    }
 }
 add_action( 'wp_ajax_wpsct_del_field', 'wpsctAjaxDelField' );
 
@@ -108,7 +108,7 @@ function wpsctAjaxSortFields() {
             $ordernum++;
         }
 
-    }    
+    }
 }
 add_action( 'wp_ajax_wpsct_sort_fields', 'wpsctAjaxSortFields' );
 

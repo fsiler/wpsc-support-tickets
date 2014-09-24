@@ -57,29 +57,29 @@ if((is_user_logged_in() || @isset($_SESSION['wpsct_email'])) && is_numeric($_POS
         $wpscst_email = $current_user->user_email;
     } else {
         $wpscst_userid = 0;
-        $wpscst_email = $wpdb->escape($_SESSION['wpsct_email']);  
+        $wpscst_email = $wpdb->escape($_SESSION['wpsct_email']);
         if(trim($wpscst_email)=='') {
             $wpscst_email = @$wpdb->escape($_POST['guest_email']);
-        }        
-    }    
-    
+        }
+    }
+
     $primkey = intval($_POST['wpscst_edit_primkey']);
 
     if ( !current_user_can('manage_wpsct_support_tickets')) {
-        
+
         if($devOptions['allow_all_tickets_to_be_replied']=='true' && $devOptions['allow_all_tickets_to_be_viewed']=='true') {
             $sql = "SELECT * FROM `{$wpdb->prefix}wpscst_tickets` WHERE `primkey`='{$primkey}' LIMIT 0, 1;";
-        }                                                
+        }
         if($devOptions['allow_all_tickets_to_be_replied']=='false' || $devOptions['allow_all_tickets_to_be_viewed']=='false') {
             $sql = "SELECT * FROM `{$wpdb->prefix}wpscst_tickets` WHERE `primkey`='{$primkey}' AND `user_id`='{$wpscst_userid}' AND `email`='{$wpscst_email}' LIMIT 0, 1;";
-        }        
+        }
     } else {
         // This allows approved users, such as the admin, to reply to any support ticket
         $sql = "SELECT * FROM `{$wpdb->prefix}wpscst_tickets` WHERE `primkey`='{$primkey}' LIMIT 0, 1;";
     }
     $results = $wpdb->get_results( $sql , ARRAY_A );
     if(isset($results[0])) {
-        
+
 
             $wpscst_message = '';
 
@@ -115,12 +115,12 @@ if((is_user_logged_in() || @isset($_SESSION['wpsct_email'])) && is_numeric($_POS
                         $save_path = $wpsc_wordpress_upload_dir['basedir']. '/wpsc-support-tickets/';
                         if(!is_dir($save_path)) {
                                 @mkdir($save_path);
-                        }                
+                        }
                         $upload_name = "wpscst_file";
-                        $max_file_size_in_bytes = 2147483647;				// 2GB in bytes
-                        $valid_chars_regex = '.A-Z0-9_ !@#$%^&()+={}\[\]\',~`-';				// Characters allowed in the file name (in a Regular Expression format)
+                        $max_file_size_in_bytes = 2147483647;                                // 2GB in bytes
+                        $valid_chars_regex = '.A-Z0-9_ !@#$%^&()+={}\[\]\',~`-';                                // Characters allowed in the file name (in a Regular Expression format)
 
-                // Other variables	
+                // Other variables
                         $MAX_FILENAME_LENGTH = 260;
                         $file_name = "";
                         $file_extension = "";
@@ -173,11 +173,11 @@ if((is_user_logged_in() || @isset($_SESSION['wpsct_email'])) && is_numeric($_POS
                             }
                             $wpscst_message .= '>';
                             $wpscst_message .= '<img src="'.plugins_url().'/wpsc-support-tickets-pro/images/attachment.png" alt="" /> <strong>'.__('ATTACHMENT','wpsc-support-tickets').'</strong>: <a href="'.$wpsc_wordpress_upload_dir['baseurl'].'/wpsc-support-tickets/'.$file_name.'" target="_blank">'.$wpsc_wordpress_upload_dir['baseurl'].'/wpsc-support-tickets/'.$file_name.'</a></p>';
-                        }       
-            }        
-        
-        
-        
+                        }
+            }
+
+
+
             $wpscst_message = base64_encode(nl2br($_POST['wpscst_reply'] . $wpscst_message));
 
             $sql = "
@@ -215,19 +215,19 @@ if((is_user_logged_in() || @isset($_SESSION['wpsct_email'])) && is_numeric($_POS
                     $message .= "\r\n";
                     $cleaned_message = __("The content of the reply is: ", 'wpsc-support-tickets'). '"'. strip_tags($_POST['wpscst_reply']) .'"';
                     $message .= $cleaned_message;
-                }            
+                }
                 $headers = '';
                 if($devOptions['allow_html']=='true') {
                     $headers .= 'MIME-Version: 1.0' . "\r\n";
-                    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";                
+                    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
                 }
                 $headers .= 'From: ' . $devOptions['email'] . "\r\n" .
                 'Reply-To: ' . $devOptions['email'] .  "\r\n" .
                 'X-Mailer: PHP/' . phpversion();
                 wp_mail($to, $subject, $message, $headers);
             }
-            
-            if( $devOptions['email']!=$results[0]['email'] && $results[0]['email'] != $wpscst_email) { 
+
+            if( $devOptions['email']!=$results[0]['email'] && $results[0]['email'] != $wpscst_email) {
                 $to      = $devOptions['email']; // Send this to the admin
                 $subject = __("Reply to a support ticket was received.", 'wpsc-support-tickets').' "'. strip_tags(base64_decode($results[0]['title'])).'"';
                 $message = __('There is a new reply on support ticket: ','wpsc-support-tickets').get_admin_url().'admin.php?page=wpscSupportTickets-edit&primkey='.$primkey.'';
@@ -240,8 +240,8 @@ if((is_user_logged_in() || @isset($_SESSION['wpsct_email'])) && is_numeric($_POS
                 $headers = '';
                 if($devOptions['allow_html']=='true') {
                     $headers .= 'MIME-Version: 1.0' . "\r\n";
-                    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";                
-                }                
+                    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+                }
                 $headers .= 'From: ' . $devOptions['email'] . "\r\n" .
                 'Reply-To: ' . $devOptions['email'] .  "\r\n" .
                 'X-Mailer: PHP/' . phpversion();
